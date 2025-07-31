@@ -1,5 +1,5 @@
 import styles from './Input.module.css';
-function Input() {
-  return <input type="number" className={styles.width} ></input>;
+function Input({value}) {
+  return <input type="text" className={styles.width} value={value}></input>;
 }
 export default Input;
