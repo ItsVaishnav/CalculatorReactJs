@@ -4,6 +4,12 @@ import Input from './Input';
 import Styles from './Outer.module.css';
 function Outer(props){
     const [value , setValue] = useState('');
+
+    const HandleOnChange = (event) =>{
+        console.log(event.target.value);
+        setValue(event.target.value);
+    }
+
     const handleOnClick = (item) =>{
         if(item === '='){
             let newValue = eval(value);
@@ -18,10 +24,10 @@ function Outer(props){
     }
     return <>
         <div className={Styles.container}>
-            <Input value={value}></Input>            
+            <Input value={value} HandleOnChange={HandleOnChange}></Input>            
             <div className={Styles.flex}>
                 {props.arr.map(ele => (
-                    <Button btn={ele} handleOnClick={handleOnClick}></Button>
+                    <Button btn={ele} key={ele} handleOnClick={handleOnClick} ></Button>
                 ))}
                 
             </div>
